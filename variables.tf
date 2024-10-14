@@ -7,11 +7,31 @@ variable "aws_instance_type" {
   }
 }
 
-variable "root_volume_size" {
-  type = number
-  default = 20
+#variable "root_volume_size" {
+#  type = number
+#  default = 20
+#}
+
+#variable "root_volume_type" {
+#  type = string
+#  default = "gp2"
+#}
+
+variable "ec2_config" {
+  type = object({
+    v_size = number
+    v_type = string
+  })
+
+  default = {
+    v_size = 20
+    v_type = "gp2"
+  }
 }
 
-variable "root_volume_type" {
-  type = string
+variable "additional_tags" {
+  type = map(string)
+  default = {
+    "name" = "value"
+  }
 }
